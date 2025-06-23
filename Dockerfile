@@ -37,5 +37,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app
 
+# Expose port 3000
+EXPOSE 3000
+
 # Command to run the MCP server
 CMD ["uv", "run", "server.py"]

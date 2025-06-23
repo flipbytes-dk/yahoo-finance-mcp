@@ -4,6 +4,7 @@ from enum import Enum
 import pandas as pd
 import yfinance as yf
 from mcp.server.fastmcp import FastMCP
+import uvicorn
 
 
 # Define an enum for the type of financial statement
@@ -412,6 +413,7 @@ async def get_recommendations(ticker: str, recommendation_type: str, months_back
 
 
 if __name__ == "__main__":
-    # Initialize and run the server
-    print("Starting Yahoo Finance MCP server...")
-    yfinance_server.run(transport="stdio")
+    # Run the server with HTTP transport using uvicorn
+    print("Starting Yahoo Finance MCP server on 0.0.0.0:3000...")
+    # Assuming FastMCP app is accessible as yfinance_server.app
+    uvicorn.run(yfinance_server.app, host="0.0.0.0", port=3000)
